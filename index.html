@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <!-- deixa a página responsiva para celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventos Acadêmicos</title>
+  <!-- arquivo de estilos -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- cabecalho da página -->
+  <header>
+    <h1>Gerenciamento de Eventos Acadêmicos</h1>
+    <p>Cadastro e listagem de eventos</p>
+  </header>
+
+  <main>
+    <!-- formulario de cadastro de eventos -->
+    <section class="card">
+      <h2>Novo evento</h2>
+      <form id="form-evento">
+        <!-- titulo: obrigatorio, limite de 150 caracteres igual a tabela -->
+        <label for="titulo">Título *</label>
+        <input type="text" id="titulo" maxlength="150" required />
+
+        <!-- descricao: opcional -->
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" rows="3"></textarea>
+
+        <!-- data e local lado a lado -->
+        <div class="linha">
+          <div>
+            <!-- usa o input date e converte para dd/mm/aaaa no JavaScript -->
+            <label for="data_evento">Data *</label>
+            <input type="date" id="data_evento" required />
+          </div>
+          <div>
+            <!-- local: obrigatório, limite de 100 caracteres igual a tabela -->
+            <label for="local">Local *</label>
+            <input type="text" id="local" maxlength="100" required />
+          </div>
+        </div>
+
+        <button type="submit" id="btn-salvar">Cadastrar evento</button>
+        <!-- aqui aparece a mensagem de sucesso ou de erro -->
+        <p id="mensagem" class="mensagem"></p>
+      </form>
+    </section>
+
+    <!-- listagem dos eventos -->
+    <section class="card">
+      <div class="titulo-lista">
+        <h2>Eventos cadastrados</h2>
+        <!-- botao para recarregar a lista manualmente -->
+        <button type="button" id="btn-atualizar" class="secundario">Atualizar</button>
+      </div>
+      <!-- mensagem de carregando / lista vazia / erro -->
+      <p id="status-lista" class="status">Carregando eventos...</p>
+      <!-- os eventos são inseridos aqui pelo script.js -->
+      <ul id="lista-eventos"></ul>
+    </section>
+  </main>
+
+  <!-- script com a lógica e as requisições para a API -->
+  <script src="script.js"></script>
+</body>
+</html>
